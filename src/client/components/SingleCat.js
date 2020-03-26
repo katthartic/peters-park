@@ -22,6 +22,16 @@ export class DisconnectedSingleCat extends React.Component {
             <li key={idx}>{toy.name}</li>
           ))}
         </ul>
+        <div className="friends">
+          <h3>Friends</h3>
+          <ul>
+            {cat.friends.map(friend => (
+              <li key={friend.id}>
+                <CatCard {...friend} key={friend.id} />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     )
   }
