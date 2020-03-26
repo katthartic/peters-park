@@ -17,9 +17,7 @@ const fakeCats = [
   { id: 2, name: 'Peter' }
 ]
 
-
-xdescribe('Redux - Cats', () => {
-
+describe('Redux - Cats', () => {
   describe('Initial state', () => {
     it('should have an empty array as the initial state', () => {
       const dummyAction = {} // just a blank obj for the action
@@ -40,9 +38,7 @@ xdescribe('Redux - Cats', () => {
         // we're just giving it an array of strings because we don't care too much about what the
         const loadCatsAction = loadCats(['cat1', 'cat2'])
         expect(loadCatsAction.cats).to.deep.equal(['cat1', 'cat2'])
-
       })
-
     })
   })
 
@@ -85,7 +81,6 @@ xdescribe('Redux - Cats', () => {
           cats: fakeCats
         }
         expect(actions[0]).to.be.deep.equal(expectedPayload)
-
       })
     })
   })
@@ -95,7 +90,7 @@ xdescribe('Redux - Cats', () => {
       const prevState = []
       const action = {
         type: 'LOAD_CATS',
-        cats: fakeCats,
+        cats: fakeCats
       }
       const nextState = catsReducer(prevState, action)
       expect(nextState).to.be.deep.equal(fakeCats)
