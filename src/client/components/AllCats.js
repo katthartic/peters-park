@@ -11,25 +11,29 @@ import CatCard from './CatCard'
 // you want the default export
 // don't worry about it too much
 export class DisconnectedAllCats extends React.Component {
-
   render() {
+    const { cats } = this.props
     return (
-      <div className='all-cats'>
+      <div className="all-cats">
+        <h1>Peter's Park</h1>
+        <ul>
+          {cats.map(cat => (
+            <li key={cat.id}>
+              <CatCard {...cat} key={cat.id} />
+            </li>
+          ))}
+        </ul>
       </div>
     )
   }
 }
 
-export const mapStateToProps = (state) => {
-  return {
-
-  }
+export const mapStateToProps = ({ cats }) => {
+  return { cats }
 }
 
-export const mapDispatchToProps = (dispatch) => {
-  return {
-
-  }
+export const mapDispatchToProps = dispatch => {
+  return {}
 }
 
 // don't touch this line
@@ -37,6 +41,3 @@ export const mapDispatchToProps = (dispatch) => {
 // so if you're using DisconnectedAllCats somewhere else in your program
 // you're gonna have a bad time
 export default connect(mapStateToProps, mapDispatchToProps)(DisconnectedAllCats)
-
-
-

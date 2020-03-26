@@ -12,7 +12,7 @@ import CatCard from '../../src/client/components/CatCard'
 const adapter = new Adapter()
 enzyme.configure({ adapter })
 
-xdescribe('React - AllCats', () => {
+describe('React - AllCats', () => {
   let catsWrapper
 
   const cats = [
@@ -22,7 +22,7 @@ xdescribe('React - AllCats', () => {
 
   beforeEach(() => {
     catsWrapper = shallow(<DisconnectedAllCats cats={cats} />, {
-      disableLifecycleMethods: true,
+      disableLifecycleMethods: true
     })
   })
 
@@ -42,6 +42,4 @@ xdescribe('React - AllCats', () => {
     expect(firstCatCard.props.id).to.equal(cats[0].id)
     expect(firstCatCard.props.name).to.equal(cats[0].name)
   })
-
-
 })
