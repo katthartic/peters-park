@@ -2,19 +2,17 @@ import axios from 'axios'
 import { loadCats } from './cats'
 
 // ACTION TYPES
-const SET_CAT = 'SET_CAT'
+const LOAD_CAT = 'LOAD_CAT'
 
 // INITIAL STATE
 const initialState = {}
 
 // ACTION CREATORS
-export const loadCat = cat => ({ type: SET_CAT, cat })
+export const loadCat = cat => ({ type: LOAD_CAT, cat })
 
 // THUNK CREATORS
 export const fetchCat = id => async dispatch => {
-  console.log('in store - id', id)
-  const cat = (await axios.get(`/cats/${id}`)).data
-  console.log('in store - cat', cat)
+  const cat = (await axios.get(`/api/cats/${id}/`)).data
   return dispatch(loadCat(cat))
 }
 
@@ -23,7 +21,7 @@ export const fetchCat = id => async dispatch => {
 // don't modify what the function takes
 export default function(state = initialState, action) {
   switch (action.type) {
-    case SET_CAT:
+    case LOAD_CAT:
       return action.cat
     default:
       return state
