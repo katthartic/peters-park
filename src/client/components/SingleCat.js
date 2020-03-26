@@ -12,31 +12,29 @@ import CatCard from './CatCard'
 // don't worry about it too much
 export class DisconnectedSingleCat extends React.Component {
   render() {
+    const { cat } = this.props
+    console.log(cat)
     return (
-      <div className='single-cat'>
-
-      </div >
+      <div className="single-cat">
+        <h2>{cat.name}</h2>
+      </div>
     )
   }
 }
 
-export const mapStateToProps = (state) => {
-  return {
-
-  }
+export const mapStateToProps = ({ cat }) => {
+  return { ...cat }
 }
 
-export const mapDispatchToProps = (dispatch) => {
-  return {
-
-  }
+export const mapDispatchToProps = dispatch => {
+  return { goGetCat: () => dispatch() }
 }
 
 // don't touch this line
 // but this is the component you probably want in most cases
 // so if you're using DisconnectedSingleCat somewhere else in your program
 // you're gonna have a bad time
-export default connect(mapStateToProps, mapDispatchToProps)(DisconnectedSingleCat)
-
-
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DisconnectedSingleCat)

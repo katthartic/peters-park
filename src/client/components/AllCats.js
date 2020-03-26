@@ -33,7 +33,7 @@ export const mapStateToProps = ({ cats }) => {
 }
 
 export const mapDispatchToProps = dispatch => {
-  return {}
+  return { goGetCats: () => dispatch() }
 }
 
 // don't touch this line

@@ -17,26 +17,24 @@ xdescribe('React - SingleCat', () => {
 
   const cat = {
     id: 9001,
-    name: "Peter",
+    name: 'Peter',
     imageUrl: 'peters image url',
     toyRatings: [
       {
         name: 'laser',
-        toyLikeness:
-          { rating: 5 }
+        toyLikeness: { rating: 5 }
       }
     ],
     friends: [
       { id: 9002, name: 'Lola', imageUrl: '' },
       { id: 9003, name: 'Charlie', imageUrl: '' },
-      { id: 9004, name: 'Guapo', imageUrl: '' },
+      { id: 9004, name: 'Guapo', imageUrl: '' }
     ]
-
   }
 
   beforeEach(() => {
     catWrapper = shallow(<DisconnectedSingleCat {...cat} />, {
-      disableLifecycleMethods: true,
+      disableLifecycleMethods: true
     })
   })
 
@@ -48,7 +46,6 @@ xdescribe('React - SingleCat', () => {
   it('has an img tag with src set to imageUrl', () => {
     expect(catWrapper.find('img').length).to.be.greaterThan(0)
     expect(catWrapper.find('img').get(0).props.src).to.equal(cat.imageUrl)
-
   })
 
   it('has a list of favorite toys with class of "toys"', () => {
@@ -60,11 +57,9 @@ xdescribe('React - SingleCat', () => {
     // now we look at children's length
     const toyListItems = toyList.find('li')
     expect(toyListItems).to.have.lengthOf(cat.toyRatings.length)
-
   })
 
   describe('friends block', () => {
-
     it('should have a div with the class friends', () => {
       const friendsWrapper = catWrapper.find('.friends')
       // this is checking to make sure that it exists
@@ -83,10 +78,10 @@ xdescribe('React - SingleCat', () => {
         return cat.friends[idx].id === +catCard.key()
       })
 
-      expect(allHaveKeys, 'Each CatCard should have a corresponding ID').to.equal(true)
+      expect(
+        allHaveKeys,
+        'Each CatCard should have a corresponding ID'
+      ).to.equal(true)
     })
-
   })
-
-
 })

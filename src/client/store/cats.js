@@ -13,8 +13,12 @@ export const loadCats = cats => ({ type: SET_CATS, cats })
 
 // THUNK CREATORS
 export const fetchCats = () => async dispatch => {
-  const cats = (await axios.get('/cats')).data
-  return dispatch(loadCats(cats))
+  try {
+    const cats = (await axios.get('/cats')).data
+    return dispatch(loadCats(cats))
+  } catch (ex) {
+    console.log(ex)
+  }
 }
 
 // REDUCER

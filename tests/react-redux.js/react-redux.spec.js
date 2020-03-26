@@ -6,11 +6,17 @@ import { spy } from 'sinon'
 // the mapStateToProps and mapDispatchToProps are correct
 // You should be able to reason what parts of the state each component needs
 // but you can use this to guide you
-import { mapStateToProps as AllCatsMapState, mapDispatchToProps as AllCatsMapDispatch } from '../../src/client/components/AllCats'
-import { mapStateToProps as SingleCatMapState, mapDispatchToProps as SingleCatMapDispatch } from '../../src/client/components/SingleCat'
+import {
+  mapStateToProps as AllCatsMapState,
+  mapDispatchToProps as AllCatsMapDispatch
+} from '../../src/client/components/AllCats'
+import {
+  mapStateToProps as SingleCatMapState,
+  mapDispatchToProps as SingleCatMapDispatch
+} from '../../src/client/components/SingleCat'
 
 describe('React-Redux MapBlanks', () => {
-  xdescribe('AllCats', () => {
+  describe('AllCats', () => {
     describe('mapState', () => {
       it('should take cats from state', () => {
         const fakeState = {
@@ -19,7 +25,6 @@ describe('React-Redux MapBlanks', () => {
 
         const mappedState = AllCatsMapState(fakeState)
         expect(mappedState.cats).to.equal(fakeState.cats)
-
       })
     })
     describe('mapDispatch', () => {
@@ -37,23 +42,25 @@ describe('React-Redux MapBlanks', () => {
         const mappedDispatch = AllCatsMapDispatch(fakeDispatch)
         mappedDispatch.goGetCats() // call the thing so we "load" the cats
         expect(fakeDispatch.calledOnce).to.equal(true)
-
       })
     })
   })
 
-  xdescribe('SingleCats', () => {
+  describe('SingleCats', () => {
     describe('mapState', () => {
-      it('should SPREAD the state\'s .cat', () => {
+      it("should SPREAD the state's .cat", () => {
         const fakeState = {
           cat: {
             id: 9001,
             name: 'thundercat',
             stuff: {
               that: {
-                you: ['better', {
-                  be: 'spreading'
-                }]
+                you: [
+                  'better',
+                  {
+                    be: 'spreading'
+                  }
+                ]
               }
             },
             or: "you're",
@@ -64,13 +71,12 @@ describe('React-Redux MapBlanks', () => {
 
         const mappedState = SingleCatMapState(fakeState)
         expect(mappedState).to.deep.equal(fakeState.cat)
-
       })
     })
 
     describe('mapDispatch', () => {
       it('should have a goGetCat property & should be a function', () => {
-        const fakeDispatch = spy();
+        const fakeDispatch = spy()
 
         const mappedDispatch = SingleCatMapDispatch(fakeDispatch)
         expect(mappedDispatch.goGetCat).to.not.be.an('undefined')
